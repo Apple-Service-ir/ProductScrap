@@ -10,7 +10,7 @@ def get_products():
 
     productPriceCount = 1
     productCount = 0
-    products = {}
+    products = []
 
     for div in soup.find_all(class_='post-card-item-af972'):
         for childdiv in div.find_all('a'):
@@ -35,13 +35,13 @@ def get_products():
                 except:
                     pass
 
-        products[title] = [
-            title,
-            price,
-            link,
-            pictures,
-            isProductSalesByShop
-        ]
+        products.append({
+            "title" : title,
+            "price" : price,
+            "link" : link,
+            "pictures" : pictures,
+            "isProductSalesByShop" : isProductSalesByShop
+        })
 
         productPriceCount+=2
         productCount += 1
